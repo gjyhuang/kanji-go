@@ -1,6 +1,7 @@
 import React from 'react';
 import { Player } from 'video-react';
 import videoSrc from '../assets/videos/6C34.mp4';
+import kanjiImg from '../assets/img/6C34.png';
 
 const KanjiVideo = () => {
   let [player, setPlayer] = React.useState(false);
@@ -35,35 +36,47 @@ const KanjiVideo = () => {
     setCurrentStrokeIndex(index);
   }
 
+  console.log(player, player.poster)
+
     return (
       <div className="kanji-animation">
-        <Player
-          ref={playerParam => {
-            player = playerParam;
-          }}
-          aspectRatio={"1:1"}
-          style={{paddingTop: 0}}
-          video
-        >
-          <source src={videoSrc} />
-        </Player>
-        <div>{currentStrokeIndex}</div>
+        <div className="kanji-wrapper">
+          <div className="kanji-img">
+            <img src={kanjiImg} alt="kanji" />
+          </div>
+          <Player
+            fluid={true}
+            playsInline
+            ref={playerParam => {
+              player = playerParam;
+            }}
+            aspectRatio={"1:1"}
+          >
+            <source src={videoSrc} />
+          </Player>
+        </div>
         <div id="player-controls">
-          <div className="icon-btn">
-            {player.paused ?
-              <i class="material-icons player-btn" onClick={play}>play_circle_outline</i> :
-              <i class="material-icons player-btn" onClick={pause}>pause_circle_outline</i>}
+          <div className="control-row">
+            <div className="icon-btn">
+              <i className="material-icons player-btn" onClick={()=>seek(currentStrokeIndex - 1)}>skip_previous</i>
+            </div>
+            <div className="icon-btn">
+              {player.paused ?
+                <i className="material-icons player-btn" onClick={play}>play_circle_outline</i> :
+                <i className="material-icons player-btn" onClick={pause}>pause_circle_outline</i>}
+            </div>
+            <div className="icon-btn">
+              <i className="material-icons player-btn" onClick={()=>seek(currentStrokeIndex + 1)}>skip_next</i>
+            </div>
           </div>
-          <div className="icon-btn">
-            <i class="material-icons player-btn" onClick={()=>seek(currentStrokeIndex + 1)}>skip_next</i>
-          </div>
-          <div className="icon-btn">
-            <i class="material-icons player-btn" onClick={()=>seek(currentStrokeIndex - 1)}>skip_previous</i>
-          </div>
-          <div className="icon-btn">
-            <i class="material-icons player-btn" onClick={()=>seek(currentStrokeIndex)}>replay</i>
+          <div className="control-row">
+            <div className="icon-btn">
+              <i className="material-icons player-btn" onClick={()=>seek(currentStrokeIndex)}>replay</i>
+            </div>
           </div>
         </div>
+
+        <div>{currentStrokeIndex}</div>
       </div>
     );
 }

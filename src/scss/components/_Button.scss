@@ -1,0 +1,30 @@
+.button {
+  color: $text-inverse !important;
+  text-transform: uppercase;
+  text-decoration: none;
+  background: $link;
+  padding: 20px;
+  // border: 4px solid #494949 !important;
+  display: inline-block;
+  transition: all 0.4s ease 0s;
+}
+
+.button:hover {
+  color: $text-inverse !important;
+  background: $hover;
+  // border-color: #f6b93b !important;
+  transition: all 0.4s ease 0s;
+}
+
+// video player control buttons
+
+.player-btn {
+  color: $text;
+  font-size: 36px;
+  transition: all 0.4s ease 0s;
+}
+
+.player-btn:hover {
+  color: $hover;
+  transition: all 0.4s ease 0s;
+}
