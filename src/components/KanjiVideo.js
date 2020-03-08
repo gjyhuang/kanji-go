@@ -1,6 +1,5 @@
 import React from 'react';
-import { Player, ControlBar } from 'video-react';
-import Button from './Button';
+import { Player } from 'video-react';
 import videoSrc from '../assets/videos/6C34.mp4';
 
 const KanjiVideo = () => {
@@ -42,24 +41,28 @@ const KanjiVideo = () => {
           ref={playerParam => {
             player = playerParam;
           }}
+          aspectRatio={"1:1"}
+          style={{paddingTop: 0}}
+          video
         >
           <source src={videoSrc} />
         </Player>
         <div>{currentStrokeIndex}</div>
-        <div className="py-3">
-          <Button onClickFunc={play} text="play" />
-        </div>
-        <div className="py-3">
-          <Button onClickFunc={pause} text="pause" />
-        </div>
-        <div className="py-3">
-          <Button onClickFunc={()=>seek(currentStrokeIndex + 1)} text="next" />
-        </div>
-        <div className="py-3">
-          <Button onClickFunc={()=>seek(currentStrokeIndex-1)} text="previous" />
-        </div>
-        <div className="py-3">
-          <Button onClickFunc={()=>seek(currentStrokeIndex)} text="redo" />
+        <div id="player-controls">
+          <div className="icon-btn">
+            {player.paused ?
+              <i class="material-icons player-btn" onClick={play}>play_circle_outline</i> :
+              <i class="material-icons player-btn" onClick={pause}>pause_circle_outline</i>}
+          </div>
+          <div className="icon-btn">
+            <i class="material-icons player-btn" onClick={()=>seek(currentStrokeIndex + 1)}>skip_next</i>
+          </div>
+          <div className="icon-btn">
+            <i class="material-icons player-btn" onClick={()=>seek(currentStrokeIndex - 1)}>skip_previous</i>
+          </div>
+          <div className="icon-btn">
+            <i class="material-icons player-btn" onClick={()=>seek(currentStrokeIndex)}>replay</i>
+          </div>
         </div>
       </div>
     );

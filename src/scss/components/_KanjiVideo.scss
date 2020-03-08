@@ -1,0 +1,20 @@
+.kanji-animation {
+  height: 20vh;
+  max-height: 100vh;
+}
+
+#player-controls {
+  display: flex;
+}
+
+.video-react {
+  padding-top: 0 !important;
+}
+
+.video-react video {
+  height: 50vh;
+  width: 50vh;
+  max-height: 300px;
+  max-width: 300px;
+  padding-top: 0;
+}
