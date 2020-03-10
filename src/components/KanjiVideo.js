@@ -2,10 +2,12 @@ import React from 'react';
 import { Player } from 'video-react';
 import videoSrc from '../assets/videos/6C34.mp4';
 import kanjiImg from '../assets/img/6C34.png';
+import Button from './Button';
 
 const KanjiVideo = () => {
   let [player, setPlayer] = React.useState(false);
-  let strokePoints = [0, 2.455, 5.400, 7.171, 8.978];
+  const [animationIsActive, setAnimationIsActive] = React.useState(false);
+  const strokePoints = [0, 2.455, 5.400, 7.171, 8.978];
   const [currentStrokeIndex, setCurrentStrokeIndex] = React.useState(0);
   // const [pause, setPause] = React.useState(false);
   // const [changeCurrentTime, setChangeCurrentTime] = React.useState(false);
@@ -42,7 +44,11 @@ const KanjiVideo = () => {
       <div className="kanji-animation">
         <div className="kanji-wrapper">
           <div className="kanji-img">
-            <img src={kanjiImg} alt="kanji" />
+            <img
+              src={kanjiImg}
+              alt="kanji"
+              style={animationIsActive ? {display: "none"} : {display: "block"}}
+            />
           </div>
           <Player
             fluid={true}
@@ -56,6 +62,14 @@ const KanjiVideo = () => {
           </Player>
         </div>
         <div id="player-controls">
+          <Button
+            text={animationIsActive ? "Show kanji" : "View kanji strokes"}
+            onClickFunc={() => {
+              setAnimationIsActive(!animationIsActive);
+              play();
+            }}
+            style={{width: 200}}
+          />
           <div className="control-row">
             <div className="icon-btn">
               <i className="material-icons player-btn" onClick={()=>seek(currentStrokeIndex - 1)}>skip_previous</i>

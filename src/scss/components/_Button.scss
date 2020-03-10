@@ -1,5 +1,6 @@
 .button {
   color: $text-inverse !important;
+  font-family: _font(family);
   text-transform: uppercase;
   text-decoration: none;
   background: $link;
@@ -7,6 +8,7 @@
   // border: 4px solid #494949 !important;
   display: inline-block;
   transition: all 0.4s ease 0s;
+  text-align: center;
 }
 
 .button:hover {
