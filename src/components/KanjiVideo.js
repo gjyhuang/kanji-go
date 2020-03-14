@@ -1,13 +1,11 @@
 import React from 'react';
 import { Player } from 'video-react';
-import videoSrc from '../assets/videos/6C34.mp4';
-import kanjiImg from '../assets/img/6C34.png';
 import Button from './Button';
 
-const KanjiVideo = () => {
+const KanjiVideo = ({video, strokes}) => {
   let [player, setPlayer] = React.useState(false);
   const [animationIsActive, setAnimationIsActive] = React.useState(false);
-  const strokePoints = [0, 2.455, 5.400, 7.171, 8.978];
+  const strokePoints = strokes.timings;
   const [currentStrokeIndex, setCurrentStrokeIndex] = React.useState(0);
   // const [pause, setPause] = React.useState(false);
   // const [changeCurrentTime, setChangeCurrentTime] = React.useState(false);
@@ -27,25 +25,26 @@ const KanjiVideo = () => {
     setPlayer(state)
   }
   const play=()=>{
+    setAnimationIsActive(true);
     player.play();
   }
   const pause=()=>{
     player.pause();
   }
   const seek=(index)=>{
-    // console.log(player.getState().player.currentTime);
+    setAnimationIsActive(true);
     player.seek(strokePoints[index]);
     setCurrentStrokeIndex(index);
   }
 
-  console.log(player, player.poster)
+  // console.log(player, player.poster)
 
     return (
       <div className="kanji-animation">
         <div className="kanji-wrapper">
           <div className="kanji-img">
             <img
-              src={kanjiImg}
+              src={video.poster}
               alt="kanji"
               style={animationIsActive ? {display: "none"} : {display: "block"}}
             />
@@ -57,16 +56,24 @@ const KanjiVideo = () => {
               player = playerParam;
             }}
             aspectRatio={"1:1"}
+            poster={video.poster}
           >
-            <source src={videoSrc} />
+            <source src={video.mp4} />
           </Player>
         </div>
         <div id="player-controls">
           <Button
             text={animationIsActive ? "Show kanji" : "View kanji strokes"}
             onClickFunc={() => {
-              setAnimationIsActive(!animationIsActive);
-              play();
+              if (animationIsActive) {
+                player.pause();
+                setAnimationIsActive(false);
+
+              }
+              else {
+                setAnimationIsActive(true);
+                play();
+              }
             }}
             style={{width: 200}}
           />

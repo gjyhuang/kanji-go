@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import SearchBar from './SearchBar';
+import Entry from './Entry';
 
 const Dictionary = () => {
   const [kanjiData, setKanjiData] = useState({});
@@ -8,6 +9,7 @@ const Dictionary = () => {
   return (
     <div id="dictionary">
       <SearchBar setResultData={setKanjiData}/>
+      <Entry kanjiData={kanjiData}/>
     </div>
   )
 }
