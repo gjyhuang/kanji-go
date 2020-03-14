@@ -1,4 +1,5 @@
 .entry {
-  background-color: $bg;
+  background-color: _palette(bg);
   height: 100vh;
+  display: flex;
 }

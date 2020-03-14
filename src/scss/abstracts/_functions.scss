@@ -58,3 +58,10 @@
 @function _font($keys...) {
 	@return val($font, $keys...);
 }
+
+/// gets palette value
+/// @param {string} $keys Key(s).
+/// @return {string} Value.
+@function _palette($keys...) {
+	@return val($palette, $keys...);
+}
