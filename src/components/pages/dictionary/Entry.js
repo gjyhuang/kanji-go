@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import KanjiVideo from './dict/KanjiVideo';
+import KanjiVideo from './KanjiVideo';
 
 const Entry = ({kanjiData}) => {
   const { examples, kanji, radical, references } = kanjiData;

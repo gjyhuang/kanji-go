@@ -1,6 +1,6 @@
 import React from 'react';
 import { Player } from 'video-react';
-import Button from '../Button';
+import Button from '../../shared/Button';
 import VideoFrame from './VideoFrame';
 
 const KanjiVideo = ({video, strokes}) => {

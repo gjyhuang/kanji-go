@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchBar from './SearchBar';
+import SearchBar from '../../shared/SearchBar';
 import Entry from './Entry';
 
 const Dictionary = () => {
