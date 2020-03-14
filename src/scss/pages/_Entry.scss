@@ -2,4 +2,63 @@
   background-color: _palette(bg);
   height: 100vh;
   display: flex;
+  justify-content: center;
+  padding: 1em;
+}
+
+.kanji-info {
+  display: flex;
+  padding: 1em;
+  flex-direction: column;
+  flex-wrap: wrap;
+  height: 200px;
+  width: 100px;
+
+}
+
+.subheader-2 {
+  padding: 3px 5px;
+}
+
+.entry-text {
+  padding: 3px 5px 10px 5px;
+}
+
+.kanji-radical {
+  display: flex;
+  padding: 1em;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  height: 150px;
+  width: 100px;
+}
+
+.kanji-radical .subheader-1 {
+  flex-basis: 100%;
+  text-align: center;
+}
+
+.radical-img {
+  display: flex;
+  align-items: center;
+  height: 40px;
+}
+
+.radical-img img {
+  height: 35px;
+  width: 35px;
+}
+
+.radical-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 40px;
+}
+
+.radical-strokes {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-basis: 100%;
 }

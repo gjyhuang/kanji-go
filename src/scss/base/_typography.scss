@@ -2,9 +2,17 @@ body {
   font-family: _font(family);
 }
 
+.subheader-1, .subheader-2 {
+  font-weight: 700;
+  color: _palette(text-secondary);
+}
+
+.subheader-1 {
+  font-size: 18px;
+}
+
 .subheader-2 {
   font-size: 16px;
-  color: _palette(text-secondary);
 }
 
 .entry-text {
