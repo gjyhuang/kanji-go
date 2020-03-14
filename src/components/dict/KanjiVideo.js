@@ -1,6 +1,7 @@
 import React from 'react';
 import { Player } from 'video-react';
-import Button from './Button';
+import Button from '../Button';
+import VideoFrame from './VideoFrame';
 
 const KanjiVideo = ({video, strokes}) => {
   let [player, setPlayer] = React.useState(false);
@@ -98,6 +99,9 @@ const KanjiVideo = ({video, strokes}) => {
         </div>
 
         <div>{currentStrokeIndex}</div>
+        <div className="stroke-frames">
+          {strokes.images.map((frame, idx) => <VideoFrame key={idx} img={frame} seek={() => seek(idx+1)} />)}
+        </div>
       </div>
     );
 }
