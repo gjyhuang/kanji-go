@@ -8,7 +8,6 @@ const SearchBar = ({setResultData}) => {
   const handleSubmit = async evt => {
     evt.preventDefault();
     const result = await fetchJisho(query);
-    console.log(result)
     setResultData(result);
   }
 
@@ -23,7 +22,6 @@ const SearchBar = ({setResultData}) => {
 
   return (
     <div className="search-bar">
-      Search!
       <form>
         <input
           type="text"
@@ -31,8 +29,11 @@ const SearchBar = ({setResultData}) => {
           defaultValue={query}
           onChange={evt => setQuery(evt.target.value)}
         ></input>
-        <Button onClickFunc={handleSubmit} text="Submit" />
       </form>
+      <Button
+        onClickFunc={handleSubmit}
+        text="Submit"
+      />
     </div>
   )
 }
