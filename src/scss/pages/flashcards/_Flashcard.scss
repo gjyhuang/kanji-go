@@ -1,0 +1,37 @@
+.flashcard {
+  height: 20vh;
+  width: 20vw;
+  perspective: 1000px;
+}
+
+.flipper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.flashcard-front, .flashcard-back {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  height: 100%;
+  left: 0;
+  top: 0;
+  transform-style: preserve-3d;
+  transition: all 500ms ease 0s;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1px;
+}
+
+.flashcard-front {
+  background-color: _palette(bg-inverse-secondary);
+  color: _palette(text-inverse);
+}
+
+.flashcard-back {
+  background-color: _palette(bg-inverse);
+  color: _palette(text-inverse);
+  z-index: 2;
+}
