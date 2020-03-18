@@ -4,7 +4,6 @@ import Entry from './Entry';
 
 const Dictionary = () => {
   const [kanjiData, setKanjiData] = useState({});
-  console.log('kanjiData?', kanjiData)
 
   return (
     <div id="dictionary">
