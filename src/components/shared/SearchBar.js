@@ -5,8 +5,8 @@ import Button from './Button';
 const SearchBar = ({setResultData}) => {
   const [query, setQuery] = useState("");
 
-  const handleSubmit = async evt => {
-    evt.preventDefault();
+  const handleSubmit = async event => {
+    event.preventDefault();
     const result = await fetchJisho(query);
     setResultData(result);
   }
@@ -20,6 +20,14 @@ const SearchBar = ({setResultData}) => {
     }
   }
 
+  const onKeyDown = event => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      event.stopPropagation();
+      handleSubmit(event);
+    }
+  }
+
   return (
     <div className="search-bar">
       <form>
@@ -28,6 +36,7 @@ const SearchBar = ({setResultData}) => {
           className="search-jp"
           defaultValue={query}
           onChange={evt => setQuery(evt.target.value)}
+          onKeyDown={evt => onKeyDown(evt)}
         ></input>
       </form>
       <Button
