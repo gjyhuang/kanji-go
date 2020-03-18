@@ -14,13 +14,12 @@ const KanjiVideo = ({video, strokes}) => {
 
   React.useEffect(()=>{
     player.subscribeToStateChange(handleStateChange);
-  }, [])
+  }, [player])
   React.useEffect(()=>{
     if(player.getState().player.currentTime > strokePoints[currentStrokeIndex + 1]){
-      // pause();
       setCurrentStrokeIndex(currentStrokeIndex + 1);
     }
-  }, [player])
+  }, [player, currentStrokeIndex, strokePoints])
 
   const handleStateChange=(state)=>{
     setPlayer(state)
@@ -37,8 +36,6 @@ const KanjiVideo = ({video, strokes}) => {
     player.seek(strokePoints[index]);
     setCurrentStrokeIndex(index);
   }
-
-  // console.log(player, player.poster)
 
     return (
       <div className="kanji-animation">
@@ -76,7 +73,7 @@ const KanjiVideo = ({video, strokes}) => {
                 play();
               }
             }}
-            style={{width: 200}}
+            style={{width: 224}}
           />
           <div className="control-row">
             <div className="icon-btn">
@@ -98,9 +95,8 @@ const KanjiVideo = ({video, strokes}) => {
           </div>
         </div>
 
-        <div>{currentStrokeIndex}</div>
         <div className="stroke-frames">
-          {strokes.images.map((frame, idx) => <VideoFrame key={idx} img={frame} seek={() => seek(idx+1)} />)}
+          {strokes.images.map((frame, idx) => <VideoFrame key={idx} img={frame} idx={idx + 1} seek={() => seek(idx+1)} />)}
         </div>
       </div>
     );
